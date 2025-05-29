@@ -29,7 +29,7 @@
 
 </div>
 
-Overview of Spatial-MLLM. Our model is composed of a 2D visual encoder $\mathcal{E}_\text{2D}$, a spatial encoder $\mathcal{E}_\text{Spatial}$, which is initialized from a feed-forward visual geometry foundation model, a connector, and a large language model backbone. At inference time, we incorporate a space-aware frame sampling strategy to select spatially informative frames when the number of input frames is limited due to GPU memory constraints.
+Overview of Spatial-MLLM. Our model is composed of a 2D visual encoder, a spatial encoder which is initialized from a feed-forward visual geometry foundation model, a connector, and a large language model backbone. At inference time, we incorporate a space-aware frame sampling strategy to select spatially informative frames when the number of input frames is limited due to GPU memory constraints.
 
 ## 🎉 Performance
 
