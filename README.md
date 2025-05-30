@@ -13,6 +13,11 @@
     <sup>1</sup>Tsinghua University
 </p>
 
+<a href='https://arxiv.org/abs/2503.18942'><img src='https://img.shields.io/badge/arXiv-2503.18942-b31b1b.svg'></a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a href='https://liuff19.github.io/Video-T1/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a><img src='https://img.shields.io/badge/License-MIT-blue'></a> &nbsp;&nbsp;&nbsp;&nbsp;
+
+
 ![Teaser Visualization](assets/teaser-spatialmllm.png)
 
 </div>
