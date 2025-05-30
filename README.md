@@ -117,7 +117,12 @@ bash scripts/evaluate_vsibench.sh
 
 If you find it useful for your research and applications, please cite our paper using this BibTeX:
 ```bibtex
-@article{}
+@article{wu2025spatialmllmboostingmllmcapabilities,
+title={Spatial-MLLM: Boosting MLLM Capabilities in Visual-based Spatial Intelligence},
+author={Wu, Diankun  and Liu, Fangfu and Yi-Hsin Hung and Duan, Yueqi},
+journal={arXiv preprint arXiv:2505.23747},
+year={2025}
+}
 ```
 
 ## Acknowledgements
