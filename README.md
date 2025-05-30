@@ -117,4 +117,4 @@ If you find it useful for your research and applications, please cite our paper 
 
 ## Acknowledgements
 
-Thanks to these great repositories: [thinking-in-space](https://github.com/vision-x-nyu/thinking-in-space), [VGGT](https://github.com/facebookresearch/vggt), [Qwen2.5-VL](https://github.com/QwenLM/Qwen2.5-VL),[open-r1](https://github.com/huggingface/open-r1), [R1-V](https://github.com/Deep-Agent/R1-V),[VLM-R1](https://github.com/om-ai-lab/VLM-R1) and many other inspiring works in the community.
+Thanks to these great repositories: [thinking-in-space](https://github.com/vision-x-nyu/thinking-in-space), [VGGT](https://github.com/facebookresearch/vggt), [Qwen2.5-VL](https://github.com/QwenLM/Qwen2.5-VL),[open-r1](https://github.com/huggingface/open-r1), [R1-V](https://github.com/Deep-Agent/R1-V), [VLM-R1](https://github.com/om-ai-lab/VLM-R1) and many other inspiring works in the community.
