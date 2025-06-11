@@ -178,3 +178,4 @@ checkpoints
 eval_results
 evaluate/annotation/VSIBench
 tools
+.vscode/

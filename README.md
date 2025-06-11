@@ -62,7 +62,7 @@ conda activate spatial-mllm
 
 ```bash
 pip install torch==2.6.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124 # Adjust the CUDA version as needed
-pip install transformers==4.51.3 accelerate==1.5.2 qwen_vl_utils decord ray Levenshtein
+pip install transformers==4.51.3 accelerate==1.5.2 qwen_vl_utils decord ray Levenshtein tyro
 pip install pip install flash-attn --no-build-isolation
 ```
 
@@ -70,11 +70,18 @@ pip install pip install flash-attn --no-build-isolation
 
 ### Inference
 
-For inference, please refer to scripts/inference.py.
+To run inference, use the provided script:
 ```bash
 python scripts/inference.py
 ```
-This command will download the Spatial-MLLM-subset-sft model from huggingface and perform inference on the provided video input. You can specify the video path and other parameters in the script.
+This will:
+- Automatically download the `Spatial-MLLM-subset-sft` model from Hugging Face Hub.
+- Process the input video and text prompt (specified in script parameters) and generate the response.
+
+The script use bfloat16 precision by default and requires <b>~13GB VRAM</b> . For a full list of options, see the inline help:
+```bash
+python scripts/inference.py --help
+```
 
 ### Evaluation on VSI-Bench
 
@@ -117,7 +124,12 @@ bash scripts/evaluate_vsibench.sh
 
 If you find it useful for your research and applications, please cite our paper using this BibTeX:
 ```bibtex
-@article{}
+@article{wu2025spatialmllmboostingmllmcapabilities,
+    title={Spatial-MLLM: Boosting MLLM Capabilities in Visual-based Spatial Intelligence},
+    author={Wu, Diankun  and Liu, Fangfu and Hung, Yi-Hsin and Duan, Yueqi},
+    journal={arXiv preprint arXiv:2505.23747},
+    year={2025}
+}
 ```
 
 ## Acknowledgements
