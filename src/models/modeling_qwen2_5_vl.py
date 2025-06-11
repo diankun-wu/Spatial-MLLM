@@ -2090,7 +2090,7 @@ class VGGTEmbeddingMerger(nn.Module):
         self.patch_size = config.patch_size
         self.spatial_merge_size = config.spatial_merge_size
         self.temporal_merge_size = config.temporal_merge_size
-                
+
         self.token_merge_in_dim = self.input_dim * self.temporal_merge_size * self.spatial_merge_size * self.spatial_merge_size
         self.token_merge_ln_q = Qwen2RMSNorm(self.token_merge_in_dim, eps=1e-6)
         self.token_merge_mlp = nn.Sequential(
@@ -2098,14 +2098,14 @@ class VGGTEmbeddingMerger(nn.Module):
             nn.GELU(),
             nn.Linear(self.token_merge_in_dim, self.output_dim),
         )
-        
+
         self.vgg_to_language_ln_q = Qwen2RMSNorm(self.output_dim, eps=1e-6)
         self.vgg_to_language_mlp = nn.Sequential(
             nn.Linear(self.output_dim, self.output_dim),
             nn.GELU(),
             nn.Linear(self.output_dim, self.output_dim),
         )
-    
+
     def merge_tokens(self, tokens: torch.Tensor, images_shape: Tuple) -> torch.Tensor:
         H, W = images_shape[-2:]
         NUM_PATCH_H, NUM_PATCH_W = H // self.patch_size, W // self.patch_size
@@ -2140,16 +2140,16 @@ class VGGTEmbeddingMerger(nn.Module):
         tokens = aggregated_tokens_list[-1][:, :, patch_start_idx:]
         if media_type == "images":
             tokens = tokens.repeat_interleave(2, dim=1) # double the token number of the vgg features
-            
+
         # merge spatial and temporal tokens
         tokens = self.merge_tokens(tokens, images_shape)
-        
+
         # LayerNorm and project to language space
         x = self.vgg_to_language_ln_q(tokens)
         x = self.vgg_to_language_mlp(x)  # (Batch, Frame, Token_num, language_model_dim)
 
         return x
-    
+
 class Qwen2_5_VL_VGGTForConditionalGeneration(Qwen2_5_VLPreTrainedModel, GenerationMixin):
     _tied_weights_keys = ["lm_head.weight"]
     config_class = Qwen2_5_VLConfig
@@ -2172,7 +2172,7 @@ class Qwen2_5_VL_VGGTForConditionalGeneration(Qwen2_5_VLPreTrainedModel, Generat
             config=self.merger_config
         )
         self.post_init()
-    
+
     def get_input_embeddings(self):
         return self.model.embed_tokens
 
@@ -2619,6 +2619,8 @@ class Qwen2_5_VL_VGGTForConditionalGeneration(Qwen2_5_VLPreTrainedModel, Generat
         if cache_position[0] != 0:
             model_inputs["pixel_values"] = None
             model_inputs["pixel_values_videos"] = None
+            model_inputs["images_input"] = None
+            model_inputs["videos_input"] = None
 
         return model_inputs
 
