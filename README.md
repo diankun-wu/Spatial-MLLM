@@ -63,7 +63,7 @@ conda activate spatial-mllm
 ```bash
 pip install torch==2.6.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124 # Adjust the CUDA version as needed
 pip install transformers==4.51.3 accelerate==1.5.2 qwen_vl_utils decord ray Levenshtein tyro
-pip install pip install flash-attn --no-build-isolation
+pip install flash-attn --no-build-isolation
 ```
 
 ## 💻 Inference and Evaluation
