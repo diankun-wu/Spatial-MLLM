@@ -271,7 +271,7 @@ def main(args):
     
     ray.init()
     features = []
-    per_gpu_data_length = len(vsi_data) // n_gpu
+    per_gpu_data_length = (len(vsi_data) + n_gpu - 1) // n_gpu
     for i in range(n_gpu):
         data_gpu = vsi_data[i * per_gpu_data_length : (i + 1) * per_gpu_data_length]
         output_path_gpu = os.path.join(output_dir, f"results_{model_config.model_type}_{i}.json")
