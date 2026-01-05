@@ -232,7 +232,7 @@ Note that you need to download and preprocess the scannet raw video data and pla
 After evaluation, you will get the results saved in `results/scanqa/Spatial-MLLM-v1.1-Instruct-135K-16f.json`. Then use the following command to calculate the metrics:
 ```python
 python src/evaluation/scanqa/score_scanqa.py \
-    --input-file results/scanqa/Spatial-MLLM-v1.1-Instruct-135K-16f.json
+    --input-file "results/scanqa/Spatial-MLLM-v1.1-Instruct-135K-16f.json"
 ```
 
 ## Training
