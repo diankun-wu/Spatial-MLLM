@@ -235,7 +235,7 @@ python src/evaluation/scanqa/score_scanqa.py \
     --input-file "results/scanqa/Spatial-MLLM-v1.1-Instruct-135K-16f.json"
 ```
 
-## Training
+## 🚂 Training
 
 You can refer to our [TRAINING.md](TRAINING.md) for detailed training instructions.
 
