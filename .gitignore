@@ -174,8 +174,8 @@ cython_debug/
 .pypirc
 
 # --- costum ---
-checkpoints
-eval_results
-evaluate/annotation/VSIBench
-tools
-.vscode/
+datasets/
+!datasets/evaluation/scanqa/scanqa_val_llava_style.json
+wandb/
+checkpoints/
+results/
