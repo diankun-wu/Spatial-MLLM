@@ -224,13 +224,13 @@ Here are our evaluation results for Spatial-MLLM-v1.1-Instruct and baseline mode
 
 ### Evaluation on ScanQA
 We also provide evaluation scripts for ScanQA:
-```
+```bash
 bash scripts/evaluation/evaluate_scanqa_spatial_mllm.sh
 ``` 
 Note that you need to download and preprocess the scannet raw video data and place them in `datasets/visuals/scannet/videos` before evaluation.
 
 After evaluation, you will get the results saved in `results/scanqa/Spatial-MLLM-v1.1-Instruct-135K-16f.json`. Then use the following command to calculate the metrics:
-```python
+```bash
 python src/evaluation/scanqa/score_scanqa.py \
     --input-file "results/scanqa/Spatial-MLLM-v1.1-Instruct-135K-16f.json"
 ```
