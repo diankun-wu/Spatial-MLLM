@@ -17,11 +17,11 @@ hf download facebook/VGGT-1B --local-dir checkpoints/VGGT-1B
 ## Prepare Datasets Annotations
 
 The Spatial-MLLM-v1.1-Instruct-135k model is trained on the following datasets:
-- `spatial_mllm_mix_133k`: A mixture of our self-created data and ScanQA/SQA3D data. The annotations are available [here](https://huggingface.co/Diankun/Spatial-MLLM-Data/tree/main/annotation).
+- `spatial_mllm_mix_133k`: A mixture of our self-created data and ScanQA/SQA3D data. The annotations are available [here](https://huggingface.co/datasets/Diankun/Spatial-MLLM-Data/tree/main/annotation).
 - `route_plan_scannet_2k`: A subset of route planning data used in [VLM-3R](https://github.com/VITA-Group/VLM-3R), containing around 2k samples from ScanNet.
 
 The Spatial-MLLM-v1.1-Instruct-820k model is trained on the following datasets:
-- `spatial_mllm_mix_203k`: A mixture of our self-created data and ScanQA/SQA3D data. The annotations are available [here](https://huggingface.co/Diankun/Spatial-MLLM-Data/tree/main/annotation).
+- `spatial_mllm_mix_203k`: A mixture of our self-created data and ScanQA/SQA3D data. The annotations are available [here](https://huggingface.co/datasets/Diankun/Spatial-MLLM-Data/tree/main/annotation).
 - `route_plan_4k`: Route planning data used in [VLM-3R](https://github.com/VITA-Group/VLM-3R).
 - `vsi_590k`: The 590k dataset from [Cambrian-S](https://github.com/cambrian-mllm/cambrian-s).
 - `mindcube_21k`: The 21k dataset from [MindCube](https://github.com/mll-lab-nu/MindCube).
