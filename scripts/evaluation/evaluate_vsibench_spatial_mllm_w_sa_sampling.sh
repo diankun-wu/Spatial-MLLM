@@ -34,7 +34,7 @@ for nframe in "${nframes[@]}"; do
 
     # --- run experiment ---
     python src/evaluation/vsibench/eval_vsibench.py \
-        --model_path "$MODEL_PATH/checkpoint-14637" \
+        --model_path $MODEL_PATH \
         --model_type $MODEL_TYPE \
         --nframes $nframe \
         --annotation_dir "datasets/evaluation/vsibench" \
