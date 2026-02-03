@@ -29,7 +29,7 @@
 ## 📢 News
 - 🎉[01/05/2026] We release two new SFT models: [Spatial-MLLM-v1.1-Instruct-135K](https://huggingface.co/Diankun/Spatial-MLLM-v1.1-Instruct-135K) and [Spatial-MLLM-v1.1-Instruct-820K](https://huggingface.co/Diankun/Spatial-MLLM-v1.1-Instruct-820K). 
 - 🎉[01/05/2026] We refactor our repo and release the refined SFT training code for Spatial-MLLM-v1.1-Instruct. We also release code for space-aware frame sampling. 
-- 🎉[05/30/2025] We release [Spatial-MLLM-subset-sft](https://huggingface.co/Diankun/Spatial-MLLM-subset-sft), which is trained on a subset of our proposed Spatial-MLLM-120k dataset. We also release the evaluation code on VSI-Bench. You can refer to `previous_version` to use and evaluate this model. 
+- 🎉[05/30/2025] We release [Spatial-MLLM-subset-sft](https://huggingface.co/Diankun/Spatial-MLLM-subset-sft), which is trained on a subset of our proposed Spatial-MLLM-120k dataset. We also release the evaluation code on VSI-Bench. Please switch to the v1.0 branch for instructions and code related to this version.
 - 🔥[05/30/2025] We release "Spatial-MLLM: Boosting MLLM Capabilities in Visual-based Spatial Intelligence". Check our [project page](https://diankun-wu.github.io/Spatial-MLLM/) and [arXiv paper](https://arxiv.org/abs/2505.23747).
 
 ## 🌟 Overview
