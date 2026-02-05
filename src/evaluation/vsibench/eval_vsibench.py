@@ -24,7 +24,13 @@ from src.evaluation.utils.common_utils import (
     save_json,
     setup_logging,
 )
-from src.evaluation.vsibench.dataset_utils import MCA_QUESTION_TYPES, NA_QUESTION_TYPES, clean_text, vsi_reward
+from src.evaluation.vsibench.dataset_utils import (
+    MCA_QUESTION_TYPES,
+    NA_QUESTION_TYPES,
+    REL_DIRECTION_TYPES,
+    clean_text,
+    vsi_reward,
+)
 
 # Constants
 SFT_QUESTION_TEMPLATE = "{Question}"
@@ -210,8 +216,7 @@ def calculate_metrics(results):
             "acc": {"micro": 0.0, "macro": 0.0},
             "mra": {"micro": 0.0, "macro": 0.0},
             "all": {"micro": 0.0, "macro": 0.0},
-            "prune_ratio": {"mean": None},
-        }
+            }
 
     df = pd.DataFrame(
         [
@@ -226,6 +231,9 @@ def calculate_metrics(results):
 
     def safe_mean(series):
         return float(series.mean()) if len(series) else 0.0
+    
+    def scores_of(qtypes):
+        return [per_qtype[q]["score"] for q in qtypes if q in per_qtype]
 
     # Per-question-type scores and counts
     per_qtype = {
@@ -240,13 +248,38 @@ def calculate_metrics(results):
     micro_mra = safe_mean(df.loc[mra_mask, "reward"])
     micro_all = safe_mean(df["reward"])
 
-    # Macro scores (average of per-type scores)
-    acc_qtypes = [q for q in per_qtype if q not in NA_QUESTION_TYPES]
+    # VSI-Bench Style Macro scores
+    # Fisrt caculate macro score of relative direction question types
+    direction_scores = scores_of(REL_DIRECTION_TYPES)
+    direction_macro_score = safe_mean(pd.Series(direction_scores)) if direction_scores else None
+    
+    # acc macro score
+    acc_other_scores = [
+        per_qtype[q]["score"]
+        for q in per_qtype
+        if (q not in NA_QUESTION_TYPES) and (q not in REL_DIRECTION_TYPES)
+    ]
+    acc_effective_scores = []
+    if direction_macro_score is not None:
+        acc_effective_scores.append(direction_macro_score)
+    acc_effective_scores.extend(acc_other_scores)
+    macro_acc = safe_mean(pd.Series(acc_effective_scores))
+    
+    # mra macro score 
     mra_qtypes = [q for q in per_qtype if q in NA_QUESTION_TYPES]
-
-    macro_acc = safe_mean(pd.Series([per_qtype[q]["score"] for q in acc_qtypes]))
     macro_mra = safe_mean(pd.Series([per_qtype[q]["score"] for q in mra_qtypes]))
-    macro_all = safe_mean(pd.Series([v["score"] for v in per_qtype.values()]))
+    
+    all_other_scores = [
+        per_qtype[q]["score"]
+        for q in per_qtype
+        if q not in REL_DIRECTION_TYPES
+    ]
+    all_effective_scores = []
+    if direction_macro_score is not None:
+        all_effective_scores.append(direction_macro_score)
+    all_effective_scores.extend(all_other_scores)
+    macro_all = safe_mean(pd.Series(all_effective_scores))
+    
 
     return {
         "per_question_type": per_qtype,
@@ -254,7 +287,6 @@ def calculate_metrics(results):
         "mra": {"micro": micro_mra, "macro": macro_mra},
         "all": {"micro": micro_all, "macro": macro_all},
     }
-
 
 def evaluate_vsibench(vsi_data, model_type, model_path, batch_size, video_dir, output_path, video_nframes):
     """Evaluate model on a specific dataset. Forces batch size to 1."""
@@ -285,6 +317,23 @@ def run_worker(gpu_id, vsi_data, model_type, model_path, batch_size, video_dir, 
 
 def main(args):
     setup_logging()
+
+    # Fast path: use precomputed results JSON to only calculate metrics.
+    if args.results_json:
+        results_path = Path(args.results_json).resolve()
+        if not results_path.exists():
+            raise FileNotFoundError(f"Cached results file not found: {results_path}")
+
+        with open(results_path, "r") as f:
+            final_output = json.load(f)
+
+        final_acc_dict = calculate_metrics(final_output)
+        metrics_path = results_path.parent / f"metrics_{args.model_type}.json"
+        save_json(metrics_path, final_acc_dict)
+        print(f"Loaded cached results from {results_path}")
+        print(f"Saved metrics to {metrics_path}")
+        print(f"Final Metrics: {final_acc_dict}")
+        return
 
     # Set start method to spawn for CUDA compatibility
     try:
@@ -384,6 +433,14 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", type=str, default="eval_results", help="Directory to save evaluation results.")
     parser.add_argument(
         "--output_name", type=str, default="eval_vsibench", help="Directory to save evaluation results."
+    )
+    parser.add_argument(
+        "--results_json",
+        type=str,
+        default=None,
+        help=(
+            "Path to an existing results JSON file. If provided, evaluation is skipped and only metrics are computed."
+        ),
     )
     args = parser.parse_args()
 

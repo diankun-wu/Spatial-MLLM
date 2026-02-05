@@ -3,6 +3,12 @@ from typing import Iterable, Optional
 
 import torch
 
+REL_DIRECTION_TYPES = [
+    "object_rel_direction_easy",
+    "object_rel_direction_medium",
+    "object_rel_direction_hard",
+]
+
 MCA_QUESTION_TYPES = [
     "object_rel_direction_easy",
     "object_rel_direction_medium",

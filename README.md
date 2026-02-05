@@ -169,54 +169,54 @@ Here are our evaluation results for Spatial-MLLM-v1.1-Instruct and baseline mode
     <td style="text-align: center;">35.42</td>
     <td style="text-align: center;">20.72</td>
     <td style="text-align: center;">27.86</td>
-    <td style="text-align: center;">37.12</td>
+    <td style="text-align: center;">32.84</td>
     <td style="text-align: center;">21.65</td>
-    <td style="text-align: center;">30.93</td>
+    <td style="text-align: center;">27.25</td>
   </tr>
   <tr>
     <td><strong>Qwen2.5-VL-3B-Instruct-135K</strong></td>
     <td style="text-align: center;">46.91</td>
     <td style="text-align: center;">52.60</td>
     <td style="text-align: center;">49.84</td>
-    <td style="text-align: center;">46.16</td>
+    <td style="text-align: center;">46.47</td>
     <td style="text-align: center;">52.81</td>
-    <td style="text-align: center;">48.82</td>
+    <td style="text-align: center;">49.64</td>
   </tr>
   <tr>
     <td><strong>Spatial-MLLM-v1.1-Instruct-135K</strong></td>
     <td style="text-align: center;">49.28</td>
     <td style="text-align: center;">52.88</td>
     <td style="text-align: center;">51.13</td>
-    <td style="text-align: center;">49.12</td>
+    <td style="text-align: center;">47.07</td>
     <td style="text-align: center;">53.88</td>
-    <td style="text-align: center;">51.02</td>
+    <td style="text-align: center;">50.48</td>
   </tr>
   <tr>
     <td><strong>Spatial-MLLM-v1.1-Instruct-135K (SA Sampling)</strong></td>
     <td style="text-align: center;">52.13</td>
     <td style="text-align: center;">53.33</td>
     <td style="text-align: center;">52.75</td>
-    <td style="text-align: center;">52.84</td>
+    <td style="text-align: center;">49.15</td>
     <td style="text-align: center;">54.46</td>
-    <td style="text-align: center;">53.49</td>
+    <td style="text-align: center;">51.81</td>
   </tr>
   <tr>
     <td><strong>Spatial-MLLM-v1.1-Instruct-820K</strong></td>
     <td style="text-align: center;">49.56</td>
     <td style="text-align: center;">57.27</td>
     <td style="text-align: center;">53.53</td>
-    <td style="text-align: center;">48.02</td>
+    <td style="text-align: center;">48.60</td>
     <td style="text-align: center;">57.39</td>
-    <td style="text-align: center;">51.77</td>
+    <td style="text-align: center;">53.00</td>
   </tr>
   <tr>
     <td><strong>Spatial-MLLM-v1.1-Instruct-820K  (SA Sampling)</strong></td>
     <td style="text-align: center;">50.60</td>
     <td style="text-align: center;">57.68</td>
     <td style="text-align: center;">54.24</td>
-    <td style="text-align: center;">50.12</td>
+    <td style="text-align: center;">48.78</td>
     <td style="text-align: center;">58.09</td>
-    <td style="text-align: center;">53.30</td>
+    <td style="text-align: center;">53.43</td>
   </tr>
   
 </tbody>
